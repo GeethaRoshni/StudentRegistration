@@ -1,0 +1,10 @@
+<h1>Hi {{currentUser?.username}}!</h1>
+<h3>Find the best college college for yourself</h3>
+<select class="margin15px" [(ngModel)]="city">
+    <option disabled  [value]="undefined" selected hidden>select</option>
+    <option *ngFor="let city of cities"> {{ city }} </option>
+</select>
+  <select *ngIf="city" [(ngModel)]="college">
+    <option disabled  [value]="undefined" selected hidden>select</option>
+    <option *ngFor="let college of colleges"> {{ college }} </option>
+  </select>
