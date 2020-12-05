@@ -18,9 +18,13 @@ export class StudentsFormComponent implements OnInit, OnDestroy {
   updatedDataSubscription: Subscription;
   editubscription: Subscription;
   dashboardDataSubscription: Subscription;
-  clgInfo;
+  clgInfo: string;
   isApply = false;
-  constructor(private _fb: FormBuilder, private _applicationFormService: ApplicationFormService, private _router: Router, private _dashboardService: DashboardService) { }
+  constructor(
+    private _fb: FormBuilder,
+    private _applicationFormService: ApplicationFormService,
+    private _router: Router,
+    private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.applicationForm = this._fb.group({
@@ -50,41 +54,48 @@ export class StudentsFormComponent implements OnInit, OnDestroy {
       }
     })
 
+    /** Set Udated data */
     if (this.isEdit) {
-      this.isApply = true;
       this.updatedDataSubscription = this._applicationFormService.getFormData().subscribe(formData => {
-        const data = formData.data;
-        this.applicationForm.setValue({
-          name: data.name,
-          dob: data.dob,
-          gender: data.gender,
-          address: data.address,
-          city: data.city,
-          state: data.state,
-          country: data.country,
-          schoolName: data.schoolName,
-          completion: data.completion,
-          percentage: data.percentage
-        })
+        if (formData.data) {
+          this.isApply = true;
+          const data = formData.data;
+          this.applicationForm.setValue({
+            name: data.name,
+            dob: data.dob,
+            gender: data.gender,
+            address: data.address,
+            city: data.city,
+            state: data.state,
+            country: data.country,
+            schoolName: data.schoolName,
+            completion: data.completion,
+            percentage: data.percentage
+          })
+        }
       })
     }
-
   }
+
   /** Getting form control */
   get formCtrl() {
     return this.applicationForm.controls;
   }
 
+  /** Navigate to dashboard page */
   cancel() {
     this._router.navigateByUrl('dashboard')
   }
 
+  /** Show the form if apply */
   applyForm() {
     this.isApply = true;
   }
 
+  /** Goto confirmation screen */
   apply() {
     if (this.applicationForm.invalid) {
+      // Cant able to give markAllAsTouched because of version mismatch in angular. Otherwise it will show invalid form field errors
       this.applicationForm.markAsTouched();
       return
     } else {

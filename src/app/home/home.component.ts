@@ -11,34 +11,33 @@ import { AuthenticationService } from '../service/authentication.service';
 export class HomeComponent implements OnDestroy {
 
   currentUser: User;
-    currentUserSubscription: Subscription;
-    users: User[] = [];
+  currentUserSubscription: Subscription;
+  users: User[] = [];
 
-    constructor(
-        private authenticationService: AuthenticationService
-    ) {
-        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-            this.currentUser = user;
-        });
-    }
-debugger;
-    private map = new Map<string, string[]>([
-      ['Noida', ['Noida Institute of Engineering and Technology', 'Indian Institute of Finance']],
-      ['Pune', ['MIT Institute of Design', 'International School of Business and Media']],
-    ]);
+  constructor(
+    private authenticationService: AuthenticationService
+  ) {
+    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
+  private map = new Map<string, string[]>([
+    ['Noida', ['Noida Institute of Engineering and Technology', 'Indian Institute of Finance']],
+    ['Pune', ['MIT Institute of Design', 'International School of Business and Media']],
+  ]);
 
-    college: string;
-    city: string;
+  college: string;
+  city: string;
 
-    get cities(): string[] {
-      return Array.from(this.map.keys());
-    }
-    get colleges(): string[] | undefined {
-      return this.map.get(this.city);
-    }
+  get cities(): string[] {
+    return Array.from(this.map.keys());
+  }
+  get colleges(): string[] | undefined {
+    return this.map.get(this.city);
+  }
 
-    ngOnDestroy() {
-        // unsubscribe to ensure no memory leaks
-        this.currentUserSubscription.unsubscribe();
-    }
-    }
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.currentUserSubscription.unsubscribe();
+  }
+}

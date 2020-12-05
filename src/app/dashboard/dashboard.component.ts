@@ -67,9 +67,8 @@ export class DashboardComponent implements OnInit {
   }
   apply(params: any) {
     console.log(params);
-    this.dashboardService.sendClgData(params);
-    this.applicationService.sendEditInfo(false);    
-    this.applicationService.sendFormData(false);
+    this.dashboardService.sendClgData(params);   
+    this.applicationService.sendFormData('');
     this.router.navigateByUrl('application-form');
   }
 
