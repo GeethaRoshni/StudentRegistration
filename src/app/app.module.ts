@@ -13,13 +13,18 @@ import { ErrorInterceptor } from './core/http-error.interceptor';
 import { JwtInterceptor } from './core/dummy-jwt.interceptor';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { ActionRenderer } from './dashboard/cellRenderer/action-renderer';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    ActionRenderer
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     routing,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AgGridModule.withComponents([ActionRenderer])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

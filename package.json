@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "ag-grid-angular": "^24.1.0",
+    "ag-grid-community": "^24.1.0",
     "bootstrap": "^4.5.3",
     "core-js": "^2.5.4",
     "ng6-toastr-notifications": "^1.0.4",
