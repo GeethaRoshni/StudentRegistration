@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionRenderer } from './cellRenderer/action-renderer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,7 @@ export class DashboardComponent implements OnInit {
     context :any;
     frameworkComponents:any;
 
-  constructor() { }
+  constructor( public router:Router) { }
 
   ngOnInit(): void {
     this.getColdefs();
@@ -62,7 +63,12 @@ getRowdata(city:string){
    
 }
 apply(params:any){
+  
   console.log(params);
+}
+
+multiSelect(){
+  console.log(this.gridApi.getSelectedNodes());
 }
 
 }
