@@ -11,6 +11,7 @@ const appRoutes: Routes = [
     { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'application-form', loadChildren: './application/application.module#ApplicationModule' },
     { path: '**', redirectTo: '' }
 ];
 

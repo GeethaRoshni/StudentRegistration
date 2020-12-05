@@ -1,0 +1,32 @@
+.crud-container {
+    min-height: 2rem;
+    padding: 1.5rem;
+    padding-bottom: 1rem;
+    box-shadow: 3px 3px 8px #0000000f;
+    background-color: #fff;
+}
+
+.crud-header-container {
+    box-shadow: 3px 3px 8px #0000000f;
+    z-index: 1;
+    font-size: 1.1rem;
+    border-left-width: 4px;
+    border-left-style: solid;
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    &.no-border {
+        border-left-width: 0;
+    }
+}
+
+.crud {
+    &-container,
+    &-wrapper {
+        position: relative;
+    }
+}
+
+:host {
+    display: block;
+}

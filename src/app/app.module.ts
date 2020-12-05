@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { ActionRenderer } from './dashboard/cellRenderer/action-renderer';
+import { SharedModule } from './shared/shared.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ActionRenderer } from './dashboard/cellRenderer/action-renderer';
     HttpClientModule,
     routing,
     ReactiveFormsModule,
+    SharedModule,
+    FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AgGridModule.withComponents([ActionRenderer])
@@ -41,7 +45,8 @@ import { ActionRenderer } from './dashboard/cellRenderer/action-renderer';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // provider used to create fake backend
-    fakeBackendProvider
+    fakeBackendProvider,
+    DatePipe
 ],
   bootstrap: [AppComponent]
 })

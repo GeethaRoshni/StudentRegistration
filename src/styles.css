@@ -4,7 +4,15 @@
 @import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 @media screen and (max-width: 800px) {
-    body {
-     width: 1200px !important;
-    }
+  body {
+    width: 1200px !important;
   }
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}

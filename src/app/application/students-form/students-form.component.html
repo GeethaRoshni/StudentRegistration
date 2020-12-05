@@ -1,0 +1,159 @@
+<app-crud>
+    <app-crud-header>
+        <app-crud-title>College Information</app-crud-title>
+    </app-crud-header>
+    <app-crud-content>
+        <div class="confirm-list">
+            <div>College Name</div>
+            <div>{{clgInfo?.collegeName}}</div>
+            <div>City</div>
+            <div>{{clgInfo?.cityName}}</div>
+        </div>
+    </app-crud-content>
+    <app-crud-actions>
+        <button mat-raised-button color="primary" class="mx-primay-btn mx-primay-btn"
+            (click)="applyForm()">Apply</button>
+    </app-crud-actions>
+</app-crud>
+<div class="student-info" *ngIf="isApply">
+    <app-crud>
+        <app-crud-header>
+            <app-crud-title>Students Application Form</app-crud-title>
+        </app-crud-header>
+        <app-crud-content>
+            <form name="form" [formGroup]="applicationForm">
+                <div class="form-align">
+                    <mat-form-field>
+                        <mat-label>
+                            Name
+                        </mat-label>
+                        <input type="text" matInput formControlName="name" minlength="2" maxlength="51" required>
+                        <mat-error *ngIf="formCtrl.name.errors?.required">
+                            Name is required
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.name.errors?.maxlength">
+                            Too Long: Maximimun allowed '50' characters
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.name.errors?.minlength">
+                            Too Short: Maximimun allowed '2' characters
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field (click)="toggle.open()">
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput [matDatepicker]="toggle" formControlName="dob" required [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="toggle"></mat-datepicker-toggle>
+                        <mat-datepicker #toggle></mat-datepicker>
+                        <mat-error *ngIf="formCtrl.dob.errors?.required">
+                            Please select Date of Birth
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>
+                            Gender
+                        </mat-label>
+                        <mat-select formControlName="gender" required>
+                            <mat-option [value]="gender.key" *ngFor="let gender of genderList">
+                                {{ gender.name }}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formCtrl.gender.errors?.required">
+                            Please select gender
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>
+                            Address
+                        </mat-label>
+                        <textarea matInput formControlName="address" minlength="8" maxlength="101" required></textarea>
+                        <mat-error *ngIf="formCtrl.address.errors?.required">
+                            Please enter your address
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.address.errors?.maxlength">
+                            Too Long: Maximimun allowed '100' characters
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.address.errors?.minlength">
+                            Too Short: Maximimun allowed '8' characters
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.address.errors?.pattern">
+                            Please proceed with correct format of address
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>
+                            City
+                        </mat-label>
+                        <input type="text" matInput formControlName="city" maxlength="50" required minlength="2">
+                        <mat-error *ngIf="formCtrl.city.errors?.required">
+                            Please enter your city name
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.city.errors?.minlength">
+                            Too Short: Maximimun allowed '2' characters
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>
+                            State
+                        </mat-label>
+                        <input type="text" matInput formControlName="state" maxlength="50" required minlength="2">
+                        <mat-error *ngIf="formCtrl.state.errors?.required">
+                            Please enter your state name
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.state.errors?.minlength">
+                            Too Short: Maximimun allowed '2' characters
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>
+                            Country
+                        </mat-label>
+                        <input type="text" matInput formControlName="country" maxlength="50" required minlength="2">
+                        <mat-error *ngIf="formCtrl.country.errors?.required">
+                            Please enter your country name
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.country.errors?.minlength">
+                            Too Short: Maximimun allowed '2' characters
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>
+                            School Name
+                        </mat-label>
+                        <input type="text" matInput formControlName="schoolName" maxlength="50" required minlength="2">
+                        <mat-error *ngIf="formCtrl.schoolName.errors?.required">
+                            Please enter your School name
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.schoolName.errors?.minlength">
+                            Too Short: Maximimun allowed '4' characters
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field (click)="completeToggle.open()">
+                        <mat-label>Year of School completion</mat-label>
+                        <input matInput [matDatepicker]="completeToggle" formControlName="completion" required
+                            [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="completeToggle"></mat-datepicker-toggle>
+                        <mat-datepicker #completeToggle></mat-datepicker>
+                        <mat-error *ngIf="formCtrl.completion.errors?.required">
+                            Please select Date of Birth
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>
+                            Percentage
+                        </mat-label>
+                        <input type="text" matInput formControlName="percentage" maxlength="50" required>
+                        <mat-error *ngIf="formCtrl.percentage.errors?.required">
+                            Please enter your percentage
+                        </mat-error>
+                        <mat-error *ngIf="formCtrl.percentage.errors?.pattern">
+                            It accepts only above 1-100
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </form>
+        </app-crud-content>
+        <app-crud-actions>
+            <button mat-raised-button color="accent" class="mx-secondary-btn" (click)="cancel()">Cancel</button>
+            <button mat-raised-button color="primary" class="mx-primay-btn mx-primay-btn"
+                (click)="apply()">Continue</button>
+        </app-crud-actions>
+    </app-crud>
+</div>

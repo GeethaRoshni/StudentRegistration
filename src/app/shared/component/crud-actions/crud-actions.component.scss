@@ -1,0 +1,9 @@
+.action-btn {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    justify-content: end;
+    justify-items: stretch;
+    gap: 1rem;
+    margin-top: 20px;
+}

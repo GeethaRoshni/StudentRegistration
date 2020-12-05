@@ -1,0 +1,34 @@
+<app-crud>
+    <app-crud-header>
+        <app-crud-title>Confirmation screen</app-crud-title>
+    </app-crud-header>
+    <app-crud-content>
+        <div class="confirm-list">
+            <div>Name</div>
+            <div>{{formDetails.name}}</div>
+            <div>Date of Birth</div>
+            <div>{{dobValue}}</div>
+            <div>Gender</div>
+            <div>{{formDetails.gender}}</div>
+            <div>Address</div>
+            <div>{{formDetails.address}}</div>
+            <div>City</div>
+            <div>{{formDetails.city}}</div>
+            <div>State</div>
+            <div>{{formDetails.state}}</div>
+            <div>Country</div>
+            <div>{{formDetails.country}}</div>
+            <div>School name</div>
+            <div>{{formDetails.schoolName}}</div>
+            <div>Year of Completion</div>
+            <div>{{completionValue}}</div>
+            <div>Percentage</div>
+            <div>{{formDetails.percentage}}</div>
+        </div>
+    </app-crud-content>
+    <app-crud-actions>
+        <button mat-raised-button color="accent" class="mx-secondary-btn" (click)="edit()">Edit</button>
+        <button mat-raised-button color="primary" class="mx-primay-btn mx-primay-btn"
+            (click)="continue()">Continue</button>
+    </app-crud-actions>
+</app-crud>

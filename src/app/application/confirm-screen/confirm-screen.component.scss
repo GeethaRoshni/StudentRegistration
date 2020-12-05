@@ -1,0 +1,16 @@
+.confirm-list {
+    display: grid;
+    grid-template-columns: 25% auto;
+    grid-gap: 25px;
+}
+
+
+.mat-raised-button.mx-secondary-btn {
+    background: #fff;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-raised-button.mx-primay-btn {
+    background: #0059a6;
+    color: #fff;
+}

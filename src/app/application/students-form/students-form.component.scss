@@ -1,0 +1,31 @@
+.crud-container.form-gap {
+    padding: 2rem 2rem 1rem;
+}
+
+.form-align {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    gap: 0.5rem;
+    grid-template-rows: none;
+    justify-content: space-between;
+    justify-items: stretch;
+}
+
+.mat-raised-button.mx-secondary-btn {
+    background: #fff;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-raised-button.mx-primay-btn {
+    background: #0059a6;
+    color: #fff;
+}
+.confirm-list {
+    display: grid;
+    grid-template-columns: 25% auto;
+    grid-gap: 25px;
+}
+
+.student-info {
+    margin-top: 10px;
+}
